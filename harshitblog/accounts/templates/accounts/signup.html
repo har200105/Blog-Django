@@ -1,0 +1,8 @@
+{% extends 'index.html'%} {%load static%} {%block content%}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<p>Signup</p>
+<form style='color:white' class='site-form' method='post' action='/accounts/signup'>
+    {%csrf_token%} {{form}}
+    <input type="submit" value="signup">
+</form>
+{%endblock%}

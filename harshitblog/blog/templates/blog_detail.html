@@ -1,0 +1,14 @@
+{% extends 'index.html' %} {% block content%}
+<h1>
+    {{b.title}}
+</h1>
+<p>
+    {{b.body}}
+</p>
+<p>
+    {{b.date}}
+</p>
+<p>
+    Written By :{{b.author}}
+</p>
+<img src="{{b.pic.url}}" /> {%endblock%}

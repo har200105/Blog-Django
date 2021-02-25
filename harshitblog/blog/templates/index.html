@@ -1,0 +1,48 @@
+<!DOCTYPE html> {%load static%}
+<html lang="en">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django</title>
+</head>
+
+<body>
+    <p><a href="{% url 'Harshit:home'%}">BLOGLOGO</a></p>
+    <nav>
+        <ul>
+            {%if user.is_authenticated %}
+            <li>
+                <form class="logout-link " action="{% url 'accounts:logout'%}" method="post">
+                    {%csrf_token%}
+                    <button type="sumbit">Logout</button>
+                </form>
+            </li>
+            <li>
+                <a href="{% url 'Harshit:create'}">Write a Blog</a>
+            </li>
+            {%else%}
+            <li>
+                <a href="{% url 'accounts:login'%}">Login</a>
+                <a href="{% url 'accounts:signup'%}">Signup</a>
+            </li>
+            {%endif%}
+        </ul>
+    </nav>
+    {% for blog in blogs %}
+    <div>
+        <h1><a href="{% url 'Harshit:blogs' a=blog.title%}">{{blog.title}}</a></h1>
+        <p>{{ blog.snippet}}</p>
+        <p>{{blog.date}}</p>
+        <p>Written By :{{b.author}}</p>
+    </div>
+    {%endfor%}
+    <div class="blas">
+        {% block content%} {%endblock%}
+    </div>
+
+</body>
+
+</html>
